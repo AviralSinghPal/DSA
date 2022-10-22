@@ -4,16 +4,24 @@ public class mazePath
 {
     public static void main(String[] args)
     {
-        mazepath(0,0,3,3,"");
+        System.out.println(mazepath(0,0,3,3,""));
     }
 
-    static void mazepath(int sr ,int sc,int er,int ec,String psf) {
-        if(sr==er && sc==ec)
+    static int  mazepath(int sr ,int sc,int er,int ec,String psf) {                    //basic solution of maze path
+        int c=0;
+        if(sr==er && sc==ec) {
             System.out.println(psf);
+
+            return 1;
+
+        }
+
         if (sr + 1 <= er)
-            mazepath(sr + 1, sc, er, ec, psf + 'R');
+            c +=mazepath(sr + 1, sc, er, ec, psf + 'H');
         if (sc + 1 <= ec)
-            mazepath(sr, sc + 1, er, ec, psf + 'D');
+            c +=mazepath(sr, sc + 1, er, ec, psf + 'V');
+
+        return c;
     }
 
 }
